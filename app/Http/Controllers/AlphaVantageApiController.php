@@ -30,7 +30,7 @@ class AlphaVantageApiController extends Controller
         }
 
         $bodyStdClass = json_decode($response->getBody());
-        // As we're using the free version there's a limit to how many request we can do
+        // If we're using the free version there's a limit to how many request we can do
         if (!property_exists($bodyStdClass, "Global Quote")) {
             return response('{"message": "Too many requests. Please try again later"}', Response::HTTP_TOO_MANY_REQUESTS);
         }

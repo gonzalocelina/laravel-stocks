@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.ico') }}">
-    <title>Laravel</title>
+    <title>Laravel Stocks</title>
 
     <link href = {{ asset("css/app.css") }} rel="stylesheet" />
     <link href = {{ asset("css/styles.css") }} rel="stylesheet" />

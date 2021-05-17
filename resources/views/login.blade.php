@@ -1,19 +1,5 @@
 @extends('layout')
 @section('content')
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId            : '{{ env('FB_APP_ID')}}',
-                autoLogAppEvents : true,
-                cookie           : true,
-                xfbml            : true,
-                version          : 'v10.0'
-            });
-
-            FB.getLoginStatus(function(response) {});
-        };
-    </script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 <div class="container text-center">
     <div class="mt-5">
         <img src="{{ asset('img/laravel-logo.svg') }}" alt="" width="150px;">

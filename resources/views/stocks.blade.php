@@ -25,7 +25,7 @@
                     <label for="input-stock-symbol" class="sr-only">Stock symbol</label>
                     <input id="input-stock-symbol" style="text-transform: uppercase" class="form-control mr-1" type="text" placeholder="AMZN, GOOG, AAPL...">
                 </div>
-                <button class="btn btn-primary" onclick="getStock()">Get price</button>
+                <button class="btn btn-primary" onclick="getStockQuote()">Get price</button>
             </div>
         </div>
         <div class="row">
@@ -49,7 +49,7 @@
     </div>
 
     <script>
-        function getStock() {
+        function getStockQuote() {
             let symbol = $("#input-stock-symbol").val();
             if (symbol === "" || symbol === null) {
                 $("#error").show();

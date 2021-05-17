@@ -29,7 +29,7 @@ class FacebookController extends Controller
         try {
             $accessToken = $helper->getAccessToken();
         } catch(FacebookSDKException $e) {
-            // When validation fails or other local issues
+            // Validation fails
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
@@ -44,7 +44,7 @@ class FacebookController extends Controller
             $response = $fb->get('/me?fields=name,email');
             $userNode = $response->getGraphUser();
         } catch(FacebookSDKException $e) {
-            // When Graph returns an error
+            // Graph fails
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
@@ -61,7 +61,4 @@ class FacebookController extends Controller
         return redirect("/stocks");
 
     }
-
-
-
 }
