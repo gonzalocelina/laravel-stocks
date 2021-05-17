@@ -42,7 +42,7 @@ class AlphaVantageApiTest extends TestCase
                 ));
         });
 
-        $response = $this->getJson('api/stocks?symbol=AMZN');
+        $response = $this->getJson('api/stock-quotes?symbol=AMZN');
         $response->assertStatus(Response::HTTP_CREATED);
         $response->assertJson([
             'id' => 1,
@@ -60,7 +60,7 @@ class AlphaVantageApiTest extends TestCase
      */
     public function testNoSymbol()
     {
-        $response = $this->getJson('api/stocks');
+        $response = $this->getJson('api/stock-quotes');
         $response->assertStatus(Response::HTTP_BAD_REQUEST);
     }
 
@@ -81,7 +81,7 @@ class AlphaVantageApiTest extends TestCase
                 ));
         });
 
-        $response = $this->getJson('api/stocks?symbol=AMZN');
+        $response = $this->getJson('api/stock-quotes?symbol=AMZN');
         $response->assertStatus(Response::HTTP_TOO_MANY_REQUESTS);
         $response->assertJson([
             'message' => 'Too many requests. Please try again later',

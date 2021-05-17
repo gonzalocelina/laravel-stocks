@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Services\AlphaVantageApiService;
 use Illuminate\Http\Request;
-use App\Stock;
+use App\Models\StockQuote;
 use Illuminate\Http\Response;
 
 class AlphaVantageApiController extends Controller
 {
     /**
-     * Creates and returns a new Stock
+     * Creates and returns a new StockQuote
      *
      * @param Request $request
      * @param AlphaVantageApiService $apiService
      *
-     * @return Stock|\Illuminate\Contracts\Routing\ResponseFactory|Response|\Psr\Http\Message\ResponseInterface
+     * @return StockQuote|\Illuminate\Contracts\Routing\ResponseFactory|Response|\Psr\Http\Message\ResponseInterface
      */
-    public function getStock(Request $request, AlphaVantageApiService $apiService) {
+    public function getStockQuote(Request $request, AlphaVantageApiService $apiService) {
         $symbol = $request->get('symbol');
         if (!$symbol) {
             return response('{"message": "Symbol field can\'t be null"}', Response::HTTP_BAD_REQUEST);
@@ -39,13 +39,13 @@ class AlphaVantageApiController extends Controller
         $high = $stockData->{"03. high"};
         $low = $stockData->{"04. low"};
         $price = $stockData->{"05. price"};
-        $stock = Stock::create([
+        $stockQuote = StockQuote::create([
             'symbol' => $symbol,
             'high' => $high,
             'low' => $low,
             'price' => $price,
         ]);
 
-        return $stock;
+        return $stockQuote;
     }
 }

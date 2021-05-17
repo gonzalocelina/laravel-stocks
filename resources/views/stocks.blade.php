@@ -53,7 +53,7 @@
             let symbol = $("#input-stock-symbol").val();
             if (symbol === "" || symbol === null) {
             }
-            $.ajax({url: "{{ route('get_stocks') }}",
+            $.ajax({url: "{{ route('get_stock_quotes') }}",
                 data: {
                     'symbol': symbol
                 },

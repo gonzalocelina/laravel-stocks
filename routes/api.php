@@ -18,4 +18,4 @@ use App\Stock;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('stocks', 'AlphaVantageApiController@getStock')->name('get_stocks');
+Route::get('stock-quotes', 'AlphaVantageApiController@getStockQuote')->name('get_stock_quotes');
