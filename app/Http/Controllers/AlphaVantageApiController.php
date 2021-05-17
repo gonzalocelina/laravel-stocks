@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\AlphaVantageApiService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\StockQuote;
 use Illuminate\Http\Response;
@@ -15,7 +16,7 @@ class AlphaVantageApiController extends Controller
      * @param Request $request
      * @param AlphaVantageApiService $apiService
      *
-     * @return StockQuote|\Illuminate\Contracts\Routing\ResponseFactory|Response|\Psr\Http\Message\ResponseInterface
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|JsonResponse|Response|\Psr\Http\Message\ResponseInterface
      */
     public function getStockQuote(Request $request, AlphaVantageApiService $apiService) {
         $symbol = $request->get('symbol');
@@ -34,11 +35,16 @@ class AlphaVantageApiController extends Controller
             return response('{"message": "Too many requests. Please try again later"}', Response::HTTP_TOO_MANY_REQUESTS);
         }
 
-        $stockData = $bodyStdClass->{"Global Quote"};
-        $symbol = $stockData->{"01. symbol"};
-        $high = $stockData->{"03. high"};
-        $low = $stockData->{"04. low"};
-        $price = $stockData->{"05. price"};
+        $stockData = (array) $bodyStdClass->{"Global Quote"};
+
+        if (empty($stockData)) {
+            return new JsonResponse([]);
+        }
+
+        $symbol = $stockData["01. symbol"];
+        $high = $stockData["03. high"];
+        $low = $stockData["04. low"];
+        $price = $stockData["05. price"];
         $stockQuote = StockQuote::create([
             'symbol' => $symbol,
             'high' => $high,

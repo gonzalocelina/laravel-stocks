@@ -53,6 +53,32 @@ class AlphaVantageApiTest extends TestCase
         ]);
     }
 
+
+    /**
+     * Test no result case
+     *
+     * @return void
+     */
+    public function testNoResult()
+    {
+        $this->mock(AlphaVantageApiService::class, function ($mock) {
+            return $mock->shouldReceive('querySymbol')
+                ->once()
+                ->andReturn(new \GuzzleHttp\Psr7\Response(
+                    Response::HTTP_OK,
+                    [],
+                    '{
+                        "Global Quote": {}
+                    }'
+                ));
+        });
+
+        $response = $this->get('api/stock-quotes?symbol=123');
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertExactJson([]);
+    }
+
+
     /**
      * Test 'no symbol sent' case
      *
