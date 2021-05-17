@@ -36,6 +36,7 @@ Run the database migrations *(database connection must be set in .env before run
     php artisan migrate
     
 Compile npm scripts
+
     npm install
     npm run dev
 
