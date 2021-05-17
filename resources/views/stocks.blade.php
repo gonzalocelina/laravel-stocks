@@ -19,7 +19,7 @@
                 <h4>Please enter the stock symbol you want to check</h4>
             </div>
         </div>
-        <div class="row justify-content-center mb-1">
+        <div class="row justify-content-center mb-2">
             <div class="form-inline">
                 <div class="form-group">
                     <label for="input-stock-symbol" class="sr-only">Stock symbol</label>
