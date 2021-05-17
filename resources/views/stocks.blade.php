@@ -62,7 +62,6 @@
                     'symbol': symbol
                 },
                 success: function(result){
-                console.log(result);
                     if (result.length === 0) {
                         $("#error").show();
                         $("#error").text("There were no results for your search");
