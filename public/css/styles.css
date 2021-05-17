@@ -1,0 +1,13 @@
+.facebook-login-btn {
+    background: #3B5998;
+    font-size: 16px;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 11px;
+    font-weight: bold;
+}
+.error {
+    color: #FF0000;
+}
