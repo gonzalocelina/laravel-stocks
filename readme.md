@@ -39,7 +39,7 @@ Start the local development server
 
     php artisan serve --host=localhost --port=8001
     
-*Note: As Google Chrome doesn't support cookies on localhost, is recommended to use Mozilla Firefox for local development*
+*Note: As Google Chrome doesn't support cookies on localhost, it's recommended to use Mozilla Firefox for local development*
 
 You can now access the server at http://localhost:8001
 
