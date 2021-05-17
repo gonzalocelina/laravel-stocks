@@ -34,6 +34,10 @@ Generate a new application key
 Run the database migrations *(database connection must be set in .env before running the migrations)*
 
     php artisan migrate
+    
+Compile npm scripts
+    npm install
+    npm run dev
 
 Start the local development server
 
