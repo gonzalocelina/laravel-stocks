@@ -52,6 +52,10 @@
         function getStock() {
             let symbol = $("#input-stock-symbol").val();
             if (symbol === "" || symbol === null) {
+                $("#error").show();
+                $("#error").text("Symbol field can't be null");
+
+                return;
             }
             $.ajax({url: "{{ route('get_stock_quotes') }}",
                 data: {
